@@ -38,8 +38,4 @@ class php::repo::ubuntu (
   } else {
     ::apt::ppa { "ppa:${version_repo}": }
   }
-  exec { 'apt_get_update':
-    command => 'apt-get update',
-    path    => '/usr/bin/:/usr/sbin/'
-  }
 }
