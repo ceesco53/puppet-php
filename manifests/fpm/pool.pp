@@ -112,9 +112,9 @@ define php::fpm::pool (
   # Puppet does not allow dots in variable names
   $listen_backlog = '-1',
   $listen_allowed_clients = undef,
-  $listen_owner = pick($::php::fpm::config::listen_owner,'www-data'),
-  $listen_group = pick($::php::fpm::config::listen_group,'www-data'),
-  $listen_mode = pick($::php::fpm::config::listen_mode,'0660'),
+  $listen_owner = undef,
+  $listen_group = undef,
+  $listen_mode = undef,
   $user = $::php::fpm::config::user,
   $group = $::php::fpm::config::group,
   $pm = 'dynamic',
