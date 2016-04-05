@@ -36,8 +36,8 @@ class php::params(
       $fpm_package_suffix      = 'fpm'
       $fpm_pool_dir            = "${config_root}/fpm/pool.d"
       $fpm_service_name        = 'php5-fpm'
-      $fpm_user                = 'www-data'
-      $fpm_group               = 'www-data'
+      $fpm_user                = pick(hiera('php::params::fpm_user'),'www-data')
+      $fpm_group               = pick(hiera('php::params::fpm_group'),'www-data')
       $embedded_package_suffix = 'embed'
       $embedded_inifile        = "${config_root}/embed/php.ini"
       $package_prefix          = 'php5-'
