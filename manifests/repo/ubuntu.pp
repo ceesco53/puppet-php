@@ -44,7 +44,8 @@ class php::repo::ubuntu (
   }
   
   exec { "apt-update":
-    command => "/usr/bin/apt-get update"
+    command => "apt-get update",
+    path    => "/usr/bin/:/usr/sbin/"
   }
 
 }
