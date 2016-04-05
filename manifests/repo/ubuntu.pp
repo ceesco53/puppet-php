@@ -12,7 +12,7 @@ class php::repo::ubuntu (
   $version   = undef,
   $ppa       = undef,
 ) {
-  include '::apt'
+  include apt
 
   if($version == undef) {
     $version_real = '5.5'
@@ -34,18 +34,9 @@ class php::repo::ubuntu (
   }
 
   if ($ppa) {
-    ::apt::ppa { "ppa:${ppa}": 
-      notify => Exec["apt-update"]
-    }
+    ::apt::ppa { "ppa:${ppa}": }
   } else {
-    ::apt::ppa { "ppa:${version_repo}": 
-      notify => Exec["apt-update"]
-    }
-  }
-  
-  exec { "apt-update":
-    command => "apt-get update",
-    path    => "/usr/bin/:/usr/sbin/"
+    ::apt::ppa { "ppa:${version_repo}": }
   }
 
 }
