@@ -38,4 +38,11 @@ class php::repo::ubuntu (
   } else {
     ::apt::ppa { "ppa:${version_repo}": }
   }
+  
+  exec { "apt-update":
+    command => "/usr/bin/apt-get update"
+  }
+
+  Exec["apt-update"] -> Package <| |>
+
 }
