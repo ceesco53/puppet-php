@@ -34,15 +34,17 @@ class php::repo::ubuntu (
   }
 
   if ($ppa) {
-    ::apt::ppa { "ppa:${ppa}": }
+    ::apt::ppa { "ppa:${ppa}": 
+      notify => Exec["apt-update"]
+    }
   } else {
-    ::apt::ppa { "ppa:${version_repo}": }
+    ::apt::ppa { "ppa:${version_repo}": 
+      notify => Exec["apt-update"]
+    }
   }
   
   exec { "apt-update":
     command => "/usr/bin/apt-get update"
   }
-
-  Exec["apt-update"] -> Package <| |>
 
 }
