@@ -43,9 +43,9 @@ class php::params(
       $package_prefix          = 'php5-'
       $compiler_packages       = 'build-essential'
       $root_group              = 'root'
-      $ext_tool_enable         = '/usr/sbin/php5enmod'
-      $ext_tool_query          = '/usr/sbin/php5query'
-      $ext_tool_enabled        = true
+      $ext_tool_enable         = pick(hiera('php::params::ext_tool_enable'),'/usr/sbin/php5enmod')
+      $ext_tool_query          = pick(hiera('php::params::ext_tool_query'),'/usr/sbin/php5query')
+      $ext_tool_enabled        = pick(hiera('php::params::ext_tool_enabled'),true)
 
       case $::operatingsystem {
         'Debian': {
